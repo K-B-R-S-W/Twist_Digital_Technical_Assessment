@@ -93,7 +93,7 @@ We extract distinct feature sets for each branch to target specific deception ve
 - **Function Word Distribution**: Frequency vectors of "invisible" words (articles, prepositions, pronouns like the, and, of) which represent unconscious cognitive habits difficult to disguise
 - **Syntactic N-Grams**: Sequences of Parts of Speech tags (e.g., Adjective → Noun → Verb) to model sentence structure independent of topic
 - **Punctuation & Formatting Habits**: Specific ratios of exclamation marks, usage of ellipses (...), capitalization patterns, and double spacing, which serve as a "digital handwriting" signature
-- **Rare Word Reuse**: Track uncommon vocabulary (e.g., "plethora", "egregious") across allegedly different users—natural users rarely share rare words by chance
+- **Rare Word Reuse**: Track uncommon vocabulary (e.g., "plethora", "egregious") across allegedly different users natural users rarely share rare words by chance
 
 ---
 
@@ -103,7 +103,7 @@ We extract distinct feature sets for each branch to target specific deception ve
 
 **Challenge Addressed**: "Battery lasts forever" vs "Charge twice daily"
 
-**Why**: We require deep logical understanding, not just topic similarity. Standard Bi Encoders (using Cosine Similarity) are faster but fail at logic—distinguishing "good" from "not good" is difficult because they focus on topic similarity rather than logical relationships.
+**Why**: We require deep logical understanding, not just topic similarity. Standard Bi Encoders (using Cosine Similarity) are faster but fail at logic distinguishing "good" from "not good" is difficult because they focus on topic similarity rather than logical relationships.
 
 **Rationale**: A Cross Encoder processes both sentences simultaneously, allowing the self attention mechanism to "see" the logical relationship (Entailment vs. Contradiction) directly. We use RoBERTa-Large-MNLI pre trained on MultiNLI (433k sentence pairs with entailment/contradiction/neutral labels), making it the state of the art for logical reasoning tasks.
 
@@ -125,7 +125,7 @@ We extract distinct feature sets for each branch to target specific deception ve
 
 **Why**: We cannot use a standard classifier because we don't have labeled classes for every potential fraudster. We cannot train a supervised model asking "Is this User X?" because we don't have historical data for every potential bad actor.
 
-**Rationale**: Instead, we map each review to a "Style Vector" in high dimensional space. If the Euclidean distance (or Burrows' Delta metric) between the Style Vectors of User A and User B is below a threshold—meaning they are statistically indistinguishable—we flag them as a sockpuppet cluster.
+**Rationale**: Instead, we map each review to a "Style Vector" in high dimensional space. If the Euclidean distance (or Burrows' Delta metric) between the Style Vectors of User A and User B is below a threshold meaning they are statistically indistinguishable we flag them as a sockpuppet cluster.
 
 **Threshold Calibration**: We compute the distribution of Delta distances for known legitimate multi review users and set the threshold at the 5th percentile, capturing statistical outliers likely to be sockpuppets while minimizing false positives.
 
@@ -139,7 +139,7 @@ The **Risk Aggregation Engine** combines the signals from all three branches:
 
 ### Weighted Scoring
 
-- **Contradiction (Branch A)**: Weight 0.5 (high certainty indicator—logical contradictions are objective)
+- **Contradiction (Branch A)**: Weight 0.5 (high certainty indicator logical contradictions are objective)
 - **Manipulation (Branch B)**: Weight 0.3 (behavioral indicator context dependent)
 - **Fingerprinting (Branch C)**: Weight 0.2 (metadata indicator requires multiple reviews to confirm)
 
@@ -154,7 +154,7 @@ The output JSON includes the `trigger_source` field (e.g., "Flagged by Branch A:
 
 ### Confidence Calibration
 
-We apply **temperature scaling** post training to ensure output probabilities are properly calibrated—a 0.95 confidence score should indicate 95% empirical accuracy.
+We apply **temperature scaling** post training to ensure output probabilities are properly calibrated a 0.95 confidence score should indicate 95% empirical accuracy.
 
 ---
 
