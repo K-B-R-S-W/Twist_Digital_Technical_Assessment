@@ -414,25 +414,6 @@ Once validated, we can distill the slow NLI cross encoder into a fast **DistilBE
 
 ---
 
-## Comparison Matrix
-
-| Criterion | Approach 1: Snorkel + SetFit | Approach 2: Zero-Shot NLI |
-|---|---|---|
-| **No API Costs** |  $0 (local only) |  $0 (local only) |
-| **Generates Training Data** |  10,000+ labels automatically |  Can label unlimited for distillation |
-| **Interpretability** |  Rule level explanations + confidence |  Hypothesis level reasoning |
-| **User Feedback Loop** |  Self tuning LF weights + retraining |  Hypothesis refinement + distillation retraining |
-| **Deployment Speed** | 2-3 days (LF writing) | 2-3 days (hypothesis design) |
-| **Initial F1 (Week 1)** | 0.70-0.73 | 0.72-0.78 |
-| **Optimized F1 (Week 3)** | 0.75-0.80 | 0.76-0.82 |
-| **Production Latency** | 15ms (SetFit) | 15ms (distilled) / 100ms (NLI) |
-| **Handles Subtle Manipulation** |  Limited (needs explicit LF) |  Good (semantic reasoning) |
-| **Handles Statistical Patterns** |  Excellent (regex + stats) |  Limited (needs post filters) |
-| **Domain Transfer** |  Add domain LFs in minutes |  Add domain hypotheses in minutes |
-| **Best Use Case** | Statistical + explicit manipulation | Semantic + implicit manipulation |
-
----
-
 ## My Deployment Strategy: Hybrid Ensemble
 
 ### We can Use Both They're Complementary!
