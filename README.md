@@ -16,7 +16,7 @@ This repository contains my complete solution to the Twist Digital AI Engineer a
 ##  Important Note: Filename Change
 ### Why `contradiction_detector.py` instead of `code.py`?
 
-**Reasoning:** The Python standard library contains a module named `code` (used by the debugger `pdb` and `torch`). Naming a script `code.py` in the root directory causes a circular import error (`ImportError: cannot import name 'CrossEncoder'`) when initializing PyTorch based libraries. Renaming the file resolves this namespace conflict and ensures the code runs without crashing.
+The Python standard library contains a module named `code` (used by the debugger `pdb` and `torch`). Naming a script `code.py` in the root directory causes a circular import error (`ImportError: cannot import name 'CrossEncoder'`) when initializing PyTorch based libraries. Renaming the file resolves this namespace conflict and ensures the code runs without crashing.
 
 ##  Important Note: Dataset Format Fix
 ### Changes Made to `dataset.txt`
