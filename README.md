@@ -1,7 +1,6 @@
 # Twist_Digital_-Pvt-_Ltd
 # Deceptive Review Detection - Technical Assessment
-**Candidate**: [Your Name]  
-**Date**: January 14, 2026
+
 
 ## Overview
 This repository contains my solution to the Twist Digital AI Engineer assessment.
